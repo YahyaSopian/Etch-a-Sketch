@@ -18,4 +18,15 @@ function createGrid(size) {
   });
 }
 
+const resetGrid = () => {
+  let newSize = prompt("Enter the number of squares per side for the new grid (max 100):");
+  newSize = parseInt(newSize);
+  // input validation
+  if (newSize > 100 || newSize < 1 || isNaN(newSize)) {
+    alert("Invalid input. Please enter a number between 1 and 100.");
+    return;
+  }
+  createGrid(newSize);
+};
+
 createGrid(16);
