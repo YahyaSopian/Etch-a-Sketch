@@ -12,10 +12,26 @@ function createGrid(size) {
 
   const squareSize = 960 / size;
   const squares = document.querySelectorAll(".grid-square");
+
   squares.forEach((square) => {
+    let opacity = 1;
     square.style.width = `${squareSize}px`;
     square.style.height = `${squareSize}px`;
+    square.addEventListener("mouseover", () => {
+      if (opacity > 0) {
+        opacity -= 0.1;
+        square.style.backgroundColor = getRandomColor();
+        square.style.opacity = opacity;
+      }
+    });
   });
+}
+
+function getRandomColor() {
+  let r = Math.floor(Math.random() * 255);
+  let g = Math.floor(Math.random() * 255);
+  let b = Math.floor(Math.random() * 255);
+  return `rgb(${r},${g},${b})`;
 }
 
 const resetGrid = () => {
